@@ -1,0 +1,19 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.container-fluid {
+  width: 100%;
+  height: 100%;
+  background-color: #add2d2;
+}
+
+.toolbar {
+  background-color: #2d394d;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
