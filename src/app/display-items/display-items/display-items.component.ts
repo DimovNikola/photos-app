@@ -3,7 +3,7 @@ import { DataService } from './../../services/data.service';
 import { ItemComponent } from './../../item/item.component';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-items',
@@ -13,8 +13,9 @@ import { Observable } from 'rxjs';
 export class DisplayItemsComponent implements OnInit {
 
   items: ItemComponent[];
+  item: ItemComponent;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -29,5 +30,16 @@ export class DisplayItemsComponent implements OnInit {
       console.log(data);
       this.items = data;
     });
+  }
+
+  editItem(id: number): void {
+    this.dataService.getItem(id).subscribe((data) => {
+      this.item = data;
+    });
+    this.router.navigate(['/items', this.item.id , 'edit']);
+  }
+
+  deleteItem(id: number): void {
+    // TODO
   }
 }

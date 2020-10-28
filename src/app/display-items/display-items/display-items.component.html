@@ -4,14 +4,14 @@
       <div class="card mb-3" >
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img [routerLink]="['/items/:id']" src="{{item.thumbnailUrl}}" class="card-img">
+            <img [routerLink]="['/items/', item.id]" src="{{item.thumbnailUrl}}" class="card-img">
           </div>
           <div class="col-md-8">
-            <div class="card-body" [routerLink]="['/items/:id']">
-              <h5 class="card-title" [routerLink]="['/items/:id']">{{item.title | uppercase}}</h5>
+            <div class="card-body" [routerLink]="['/items', item.id]">
+              <h5 class="card-title" [routerLink]="['/items', item.id]">{{item.title | uppercase}}</h5>
               <div class="btn-group">
-                <button type="button" class="btn btn-dark">EDIT</button>
-                <button type="button" class="btn btn-dark" style="margin-left: 1vw;">DELETE</button>
+                <button type="button" class="btn btn-dark" (click)="editItem(item.id)">EDIT</button>
+                <button type="button" class="btn btn-dark" style="margin-left: 1vw;" (click)="deleteItem()">DELETE</button>
               </div>
             </div>
           </div>

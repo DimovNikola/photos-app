@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AddItemComponent } from './add-item/add-item/add-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DisplayItemsComponent,
     HomeComponent,
     EditComponent,
-    AddItemComponent
+    AddItemComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
