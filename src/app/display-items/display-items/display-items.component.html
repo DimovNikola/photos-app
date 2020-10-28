@@ -7,7 +7,7 @@
             <img [routerLink]="['/items/:id']" src="{{item.thumbnailUrl}}" class="card-img">
           </div>
           <div class="col-md-8">
-            <div class="card-body">
+            <div class="card-body" [routerLink]="['/items/:id']">
               <h5 class="card-title" [routerLink]="['/items/:id']">{{item.title | uppercase}}</h5>
               <div class="btn-group">
                 <button type="button" class="btn btn-dark">EDIT</button>
