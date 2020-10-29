@@ -7,11 +7,11 @@
             <img [routerLink]="['/items/', item.id]" src="{{item.thumbnailUrl}}" class="card-img">
           </div>
           <div class="col-md-8">
-            <div class="card-body" [routerLink]="['/items', item.id]">
+            <div class="card-body">
               <h5 class="card-title" [routerLink]="['/items', item.id]">{{item.title | uppercase}}</h5>
               <div class="btn-group">
                 <button type="button" class="btn btn-dark" (click)="editItem(item.id)">EDIT</button>
-                <button type="button" class="btn btn-dark" style="margin-left: 1vw;" (click)="deleteItem()">DELETE</button>
+                <button type="button" class="btn btn-dark" style="margin-left: 1vw;" (click)="deleteItem(item.id)">DELETE</button>
               </div>
             </div>
           </div>

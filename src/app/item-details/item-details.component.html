@@ -1,1 +1,39 @@
-<p>item-details works!</p>
+<div class='panel panel-primary' *ngIf='item'>
+  <div class='panel-heading'>
+      {{item.title | uppercase}}
+  </div>
+
+  <div class='panel-body'>
+      <div class='row'>
+          <div class='col-md-6'>
+              <div class='row'>
+                  <div class='col-md-3'>Album Id:</div>
+                  <div class='col-md-6'>{{item.albumId}}</div>
+              </div>
+              <div class='row'>
+                  <div class='col-md-3'>Id:</div>
+                  <div class='col-md-6'>{{item.id}}</div>
+              </div>
+          </div>
+
+          <div class='col-md-6'>
+              <img *ngIf='item.url'
+                   class='center-block img-responsive'
+                   [src]='item.url'
+                   [title]='item.url'>
+          </div>
+      </div>
+  </div>
+
+  <div class='panel-footer'>
+      <a class='btn btn-default'  style='width:80px' (click)='onBack()'>
+          <i class='glyphicon glyphicon-chevron-left'></i> Back
+      </a>
+      <a class="btn btn-primary" style="width:80px" [routerLink]="['/items', item.id, 'edit']">
+          Edit
+      </a>
+  </div>
+</div>
+<!-- <div *ngIf='errorMessage' class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div> -->

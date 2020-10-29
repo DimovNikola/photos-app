@@ -40,6 +40,9 @@ export class DisplayItemsComponent implements OnInit {
   }
 
   deleteItem(id: number): void {
-    // TODO
+    this.dataService.deleteItem(id).subscribe((data: void) => {
+      let index: number = this.items.findIndex(item => item.id === id);
+      this.items.splice(index, 1);
+    });
   }
 }

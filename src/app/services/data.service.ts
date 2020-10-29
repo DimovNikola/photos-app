@@ -1,6 +1,6 @@
 import { ItemComponent } from './../item/item.component';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -27,21 +27,37 @@ export class DataService {
   getItem(id: number): Observable<ItemComponent> {
     if(this.items) {
       const item = this.items.find(item => item.id === id);
-      console.log(item);
       if(item) {
         return of(item);
       }
     }
   }
 
+  addItem(newItem: ItemComponent): Observable<ItemComponent> {
+    return this.http.post<ItemComponent>(this.url, newItem, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  updateItem(updatedItem: ItemComponent): Observable<void> {
+    return this.http.put<void>(this.url + `/${updatedItem.id}`, updatedItem, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  deleteItem(itemId: number): Observable<void> {
+    return this.http.delete<void>(this.url + `/${itemId}`);
+  }
+
   private handleError(err: HttpErrorResponse): Observable<any>{
     let errorMessage: string;
     if (err.error instanceof Error) {
-        // A client-side or network error occurred. Handle it accordingly.
         errorMessage = `An error occurred: ${err.error.message}`;
     } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
         errorMessage = `Backend returned code ${err.status}, body was: ${err.error}`;
     }
     console.error();
