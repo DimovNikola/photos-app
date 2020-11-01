@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemComponent } from '../item/item.component';
 import { DataService } from '../services/data.service';
 
@@ -12,12 +12,13 @@ export class EditComponent implements OnInit {
 
   selectedItem: ItemComponent;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     let itemId: number = +this.route.snapshot.params['id'];
-    this.dataService.getItem(itemId).subscribe((data) => {
-      this.selectedItem = data;
+    let response = this.dataService.getItem(itemId);
+    response.subscribe((data) => {
+      this.selectedItem = data
     });
   }
 
@@ -26,6 +27,7 @@ export class EditComponent implements OnInit {
       (data: void) => console.log(`${this.selectedItem.title} updated successfully`),
       (err: any) => console.log(err)
     )
+    this.router.navigate(['/items']);
   }
 
 }
