@@ -1,51 +1,53 @@
-<form class="form-horizontal">
-  <div class="flex-container">
-    <fieldset>
-      <legend>Edit Item</legend>
-      <div class="form-group">
-        <label for="inputTitle" class="col-lg-3 control-label">Album Id</label>
-        <div class="col-lg-8">
-          <input type="text" class="form-control" id="inputAlbumId" placeholder="albumId"
-            [(ngModel)]="selectedItem && selectedItem.albumId" name="albumId">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputAuthor" class="col-lg-3 control-label">Id</label>
-        <div class="col-lg-8">
-          <input type="text" class="form-control" id="inputId" placeholder="id"
-            [(ngModel)]="selectedItem && selectedItem.id" name="id">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputYear" class="col-lg-3 control-label">Title</label>
-        <div class="col-lg-8">
-          <input type="text" class="form-control" id="inputTitle" placeholder="Title"
-            [(ngModel)]="selectedItem && selectedItem.title" name="title">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputYear" class="col-lg-3 control-label">Url</label>
-        <div class="col-lg-8">
-          <input type="text" class="form-control" id="inputUrl" placeholder="url"
-            [(ngModel)]="selectedItem && selectedItem.url" name="url">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputYear" class="col-lg-3 control-label">Thumbnail Url</label>
-        <div class="col-lg-8">
-          <input type="text" class="form-control" id="inputThumbnailUrl" placeholder="thumbnailUrl"
-            [(ngModel)]="selectedItem && selectedItem.thumbnailUrl" name="thumbnailUrl">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-lg-8 col-lg-offset-3">
-          <button type="button" class="btn btn-primary" (click)="saveChanges()">Save</button>
-        </div>
-      </div>
-    </fieldset>
-    <div class='col-md-6'>
-      <img *ngIf='selectedItem.url' class='center-block img-responsive' [src]='selectedItem.url'
-        [title]='selectedItem.url'>
+<div class="row" id="edit">
+  <div class="col-lg-5">
+    <div class="well bs-component">
+      <form #addItemForm="ngForm" (ngSubmit)="saveChanges(addItemForm.value)" class="form-horizontal">
+        <fieldset>
+          <legend>Edit: {{selectedItem.title | uppercase}}</legend>
+          <div class="form-group">
+            <label for="inputTitle" class="col-lg-3 control-label">Album Id</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="inputAlbumId" placeholder="{{selectedItem.albumId}}"
+                name="albumId" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAuthor" class="col-lg-3 control-label">Id</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="inputId" placeholder="{{selectedItem.id}}" name="id" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputYear" class="col-lg-3 control-label">Title</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="inputTitle" placeholder="{{selectedItem.title}}" name="title"
+                ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputYear" class="col-lg-3 control-label">Url</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="inputUrl" placeholder="{{selectedItem.url}}" name="url"
+                ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputYear" class="col-lg-3 control-label">Thumbnail Url</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="inputThumbnailUrl" placeholder="{{selectedItem.thumbnailUrl}}"
+                name="url" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-8 col-lg-offset-3">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
     </div>
   </div>
-</form>
+  <div class="col-sm-5">
+    <img src="{{selectedItem.url}}" class="card-img">
+  </div>
+</div>

@@ -22,7 +22,8 @@ export class EditComponent implements OnInit {
     });
   }
 
-  saveChanges(): void {
+  saveChanges(formValues: any): void {
+    this.selectedItem = <ItemComponent>formValues;
     this.dataService.updateItem(this.selectedItem).subscribe(
       (data: void) => console.log(`${this.selectedItem.title} updated successfully`),
       (err: any) => console.log(err)
