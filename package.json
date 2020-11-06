@@ -23,10 +23,12 @@
     "@angular/router": "~10.1.4",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "bootstrap": "^4.5.2",
+    "classlist.js": "^1.1.20150312",
     "jquery": "^3.5.1",
     "ngx-infinite-scroll": "^9.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -21,6 +21,7 @@ import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     ScrollingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   providers: [
     DataService,
