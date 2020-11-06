@@ -4,6 +4,20 @@
   overflow: auto;
 }
 
-@media screen and (max-width: 450px) {
-  :host() body { overflow: auto; } /* Or change the height or whatever */
+.card-img {
+  width: 31.25vw;
+  max-width: 31.25vw;
+  min-width: 370px;
+  height: 61.9vh;
+  max-height: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .card-img {
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+    height: 150px;
+    max-height: 100%;
+  }
 }
