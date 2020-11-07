@@ -1,39 +1,37 @@
-<div class='panel panel-primary' *ngIf='item'>
-  <div class='panel-heading'>
-      {{item.title | uppercase}}
-  </div>
+<!-- Page Content -->
+<div class="container">
 
-  <div class='panel-body'>
-      <div class='row'>
-          <div class='col-md-6'>
-              <div class='row'>
-                  <div class='col-md-3'>Album Id:</div>
-                  <div class='col-md-6'>{{item.albumId}}</div>
-              </div>
-              <div class='row'>
-                  <div class='col-md-3'>Id:</div>
-                  <div class='col-md-6'>{{item.id}}</div>
-              </div>
-          </div>
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4">Details<br>
+    <small>{{item.title | uppercase}}</small>
+  </h1>
 
-          <div class='col-md-6'>
-              <img *ngIf='item.url'
-                   class='center-block img-responsive'
-                   [src]='item.url'
-                   [title]='item.url'>
-          </div>
-      </div>
-  </div>
+  <!-- Portfolio Item Row -->
+  <div class="row">
 
-  <div class='panel-footer'>
-      <a class='btn btn-default'  style='width:80px' (click)='onBack()'>
-          <i class='glyphicon glyphicon-chevron-left'></i> Back
-      </a>
-      <a class="btn btn-primary" style="width:80px" [routerLink]="['/items', item.id, 'edit']">
-          Edit
-      </a>
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{item.url}}">
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="my-3">Links To Images</h3>
+      <p><strong>Url:</strong>
+        <br />
+        {{item.url}}
+      </p>
+      <p><strong>Thumbnail Url:</strong>
+        <br>
+        {{item.thumbnailUrl}}
+      </p>
+      <h3 class="my-3">Image IDs</h3>
+      <ul>
+        <li><strong>Album ID:</strong> {{item.albumId}}</li>
+        <li><strong>Image ID:</strong> {{item.id}}</li>
+      </ul>
+    </div>
+
   </div>
+  <!-- /.row -->
+
 </div>
-<!-- <div *ngIf='errorMessage' class='alert alert-danger'>
-  Error: {{ errorMessage }}
-</div> -->
+<!-- /.container -->
