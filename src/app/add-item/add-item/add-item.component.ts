@@ -18,8 +18,8 @@ export class AddItemComponent implements OnInit {
     this.initializeForm();
   }
 
-  saveItem(formValues: any): void {
-    let newItem: ItemComponent = <ItemComponent>formValues;
+  saveItem(): void {
+    let newItem: ItemComponent = this.addItemForm.getRawValue();
     newItem.id = 0;
     console.log(newItem);
 
@@ -31,7 +31,7 @@ export class AddItemComponent implements OnInit {
 
   initializeForm(): void {
     this.addItemForm = this.formBuilder.group({
-      AlbumId: '',
+      albumId: '',
       id: '',
       title: '',
       url: '',

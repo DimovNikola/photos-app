@@ -42,6 +42,7 @@ export class DataService {
   }
 
   updateItem(updatedItem: ItemComponent): Observable<void> {
+    console.log(updatedItem);
     return this.http.put<void>(this.url + `/${updatedItem.id}`, updatedItem, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

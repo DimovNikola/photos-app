@@ -8,16 +8,6 @@ cdk-virtual-scroll-viewport {
   flex-direction: row;
 }
 
-.card {
-  height: 50vh;
-}
-
-
-button:focus, button:active:focus, button.active:focus {
-  outline: none !important;
-  outline-style: none !important;
-}
-
 ::-webkit-scrollbar {
   width: 0 !important;
 }
