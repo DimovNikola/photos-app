@@ -1,4 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd, Event } from '@angular/router';
+
 
 @Component({
   selector: 'nav-bar',
@@ -10,26 +13,34 @@ export class NavBarComponent implements OnInit {
 
   clicked: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() { }
-
-  @HostListener('window:scroll') onScroll(e: Event): void {
-    this.clicked = true;
+  constructor(private location: Location, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+          if(event.url === '/items'){
+            this.clicked = true;
+          }
+          else {
+            this.clicked = false;
+          }
+      }
+    });
     console.log(this.clicked);
   }
 
-  scrollToTop() {
-    this.clicked = true;
+  ngOnInit() {
   }
 
   toggleClicked() {
     this.clicked = !this.clicked;
-    if(this.clicked) {
+    if (this.clicked) {
       document.getElementById("nav").style['height'] = "12em";
     }
     else {
       document.getElementById("nav").style['height'] = "7em";
     }
+  }
+
+  backToTop(): void {
+    location.reload();
   }
 }

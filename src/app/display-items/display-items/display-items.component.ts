@@ -1,9 +1,7 @@
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DataService } from './../../services/data.service';
 import { ItemComponent } from './../../item/item.component';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-items',
@@ -15,7 +13,7 @@ export class DisplayItemsComponent implements OnInit {
   items: ItemComponent[];
   item: ItemComponent;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getData();

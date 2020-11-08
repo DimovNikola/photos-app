@@ -11,6 +11,21 @@ export class CacheInterceptor implements HttpInterceptor {
   constructor(private cacheService: HttpCacheService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    if(req.method === 'DELETE'){
+      console.log(`Invalidating cache: ${req.method} ${req.url}`);
+      this.cacheService.invalidateCache();
+      return next.handle(req)
+      .pipe(
+        tap(event => {
+          if(event instanceof HttpResponse){
+            console.log(`Adding item to cache: ${req.url}`);
+            this.cacheService.put(req.url, event);
+          }
+        })
+      );
+    }
+
     if(req.method !== 'GET') {
       console.log(`Invalidating cache: ${req.method} ${req.url}`);
       this.cacheService.invalidateCache();

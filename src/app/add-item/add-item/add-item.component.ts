@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ItemComponent } from 'src/app/item/item.component';
 import { DataService } from './../../services/data.service';
 
@@ -10,7 +11,7 @@ import { DataService } from './../../services/data.service';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router) { }
 
   addItemForm: FormGroup;
 

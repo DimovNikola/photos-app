@@ -39,6 +39,7 @@
       <button type="submit"
           class="btn btn-dark btn-lg"
           style="margin-left: 3vw;"
+          (click)="deleteItem(item.id)"
           [routerLink]="['/items']">
               <i class="far fa-trash-alt fa-lg"></i>
           Delete

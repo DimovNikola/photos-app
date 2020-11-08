@@ -29,6 +29,13 @@ export class ItemDetailsComponent implements OnInit {
     });
   }
 
+  deleteItem(id: number): void {
+    this.dataService.deleteItem(id).subscribe((data: void) => {
+      // let index: number = this.items.findIndex(item => item.id === id);
+      // this.items.splice(index, 1);
+    });
+  }
+
   onBack(): void {
     this.router.navigate(['/items']);
   }
