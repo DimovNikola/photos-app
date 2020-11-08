@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ItemComponent } from 'src/app/item/item.component';
 import { DataService } from './../../services/data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-item',
@@ -11,7 +12,10 @@ import { DataService } from './../../services/data.service';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private dataService: DataService,
+              private router: Router,
+              private toastr: ToastrService) { }
 
   addItemForm: FormGroup;
 
@@ -28,6 +32,8 @@ export class AddItemComponent implements OnInit {
       (data: ItemComponent) => console.log(data),
       (err: any) => console.log(err)
     );
+    this.toastr.success("Item saved!");
+    this.router.navigate(["/items"]);
   }
 
   initializeForm(): void {

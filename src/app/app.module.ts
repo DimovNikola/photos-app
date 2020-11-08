@@ -21,6 +21,7 @@ import { ControlContainer, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { MatButtonModule } from '@angular/material/button';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { MatButtonModule } from '@angular/material/button';
     ScrollingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     DataService,

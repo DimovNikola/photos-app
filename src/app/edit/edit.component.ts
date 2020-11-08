@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemComponent } from '../item/item.component';
 import { DataService } from '../services/data.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit',
@@ -17,7 +18,8 @@ export class EditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private dataService: DataService,
               private router: Router,
-              private fb: FormBuilder) {}
+              private fb: FormBuilder,
+              private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.editForm = this.fb.group({
@@ -55,6 +57,7 @@ export class EditComponent implements OnInit {
       (data: void) => console.log(`${this.selectedItem.title} updated successfully`),
       (err: any) => console.log(err)
     )
+    this.toastr.success("Changes Saved!");
     this.router.navigate(['/items']);
   }
 

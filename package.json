@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.1.4",
+    "@angular/animations": "^10.1.6",
     "@angular/cdk": "^10.2.3",
     "@angular/common": "~10.1.4",
     "@angular/compiler": "~10.1.4",
@@ -26,6 +26,7 @@
     "classlist.js": "^1.1.20150312",
     "jquery": "^3.5.1",
     "ngx-infinite-scroll": "^9.1.0",
+    "ngx-toastr": "^13.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "web-animations-js": "^2.3.2",
