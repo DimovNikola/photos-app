@@ -28,8 +28,22 @@
         <li><strong>Album ID:</strong> {{item.albumId}}</li>
         <li><strong>Image ID:</strong> {{item.id}}</li>
       </ul>
+      <br />
+      <button type="submit"
+          class="btn btn-dark btn-lg"
+          style="margin-left: 3vw;"
+          [routerLink]="['/items']">
+              <i class="fas fa-chevron-left"></i>
+          Back
+      </button>
+      <button type="submit"
+          class="btn btn-dark btn-lg"
+          style="margin-left: 3vw;"
+          [routerLink]="['/items']">
+              <i class="far fa-trash-alt fa-lg"></i>
+          Delete
+      </button>
     </div>
-
   </div>
   <!-- /.row -->
 

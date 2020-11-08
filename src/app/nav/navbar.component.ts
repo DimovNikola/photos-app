@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nav-bar',
@@ -13,6 +13,15 @@ export class NavBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  @HostListener('window:scroll') onScroll(e: Event): void {
+    this.clicked = true;
+    console.log(this.clicked);
+  }
+
+  scrollToTop() {
+    this.clicked = true;
+  }
 
   toggleClicked() {
     this.clicked = !this.clicked;

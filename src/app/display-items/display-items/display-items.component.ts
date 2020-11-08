@@ -21,10 +21,6 @@ export class DisplayItemsComponent implements OnInit {
     this.getData();
   }
 
-  onScroll() {
-    this.getData();
-  }
-
   getData(): void {
     this.dataService.getData().subscribe((data) => {
       console.log(data);
