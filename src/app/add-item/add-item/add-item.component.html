@@ -40,7 +40,11 @@
         <div class="form-group">
           <label for="inputYear" class="col-lg-3 control-label">Url</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control" id="inputUrl" placeholder="url" formControlName="url">
+            <input type="text"
+                    class="form-control"
+                    id="inputUrl"
+                    placeholder="url"
+                    formControlName="url">
           </div>
           <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alert alert-danger">
             <div *ngIf="url.errors.required">

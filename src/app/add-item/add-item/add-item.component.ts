@@ -47,6 +47,7 @@ export class AddItemComponent implements OnInit {
     });
   }
 
+
   get albumId() {return this.addItemForm.get('albumId');}
   get id() {return this.addItemForm.get('id');}
   get title() {return this.addItemForm.get('title');}
