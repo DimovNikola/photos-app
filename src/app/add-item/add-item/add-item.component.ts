@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ItemComponent } from 'src/app/item/item.component';
 import { DataService } from './../../services/data.service';
 import { ToastrService } from 'ngx-toastr';
+import { ValidateUrl } from './../../validators/url.validator';
 
 @Component({
   selector: 'app-add-item',
@@ -38,11 +39,17 @@ export class AddItemComponent implements OnInit {
 
   initializeForm(): void {
     this.addItemForm = this.formBuilder.group({
-      albumId: '',
-      id: '',
-      title: '',
-      url: '',
-      thumbnailUrl: ''
+      albumId: ['', Validators.required],
+      id: ['', Validators.required],
+      title: ['', Validators.required],
+      url: ['', [Validators.required, ValidateUrl]],
+      thumbnailUrl: ['', [Validators.required, ValidateUrl]]
     });
   }
+
+  get albumId() {return this.addItemForm.get('albumId');}
+  get id() {return this.addItemForm.get('id');}
+  get title() {return this.addItemForm.get('title');}
+  get url() {return this.addItemForm.get('url');}
+  get thumbnailUrl() {return this.addItemForm.get('thumbnailUrl');}
 }

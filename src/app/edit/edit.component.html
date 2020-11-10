@@ -1,7 +1,7 @@
 <div class="row" id="edit">
   <div class="col-lg-5">
     <div class="well bs-component">
-      <form [formGroup]="editForm" (ngSubmit)="saveChanges()" class="form-horizontal">
+      <form novalidate [formGroup]="editForm" (ngSubmit)="saveChanges()" class="form-horizontal">
         <fieldset>
           <legend>Edit: {{selectedItem.title | uppercase}}</legend>
           <div class="form-group">
@@ -10,54 +10,71 @@
               <input type="text"
                       class="form-control"
                       id="inputAlbumId"
-                      formControlName="albumId">
+                      formControlName="albumId"/>
+            </div>
+            <div *ngIf="albumId.invalid && (albumId.dirty || albumId.touched)" class="alert alert-danger">
+              <div *ngIf="albumId.errors.required">
+                Album ID is Required!
+              </div>
             </div>
           </div>
           <div class="form-group">
             <label for="inputAuthor" class="col-lg-3 control-label">Id</label>
             <div class="col-lg-8">
-              <input type="text"
-                      class="form-control"
-                      id="inputId"
-                      formControlName="id">
+              <input type="text" class="form-control" id="inputId" formControlName="id">
+            </div>
+            <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+              <div *ngIf="id.errors.required">
+                ID is Required!
+              </div>
             </div>
           </div>
           <div class="form-group">
             <label for="inputYear" class="col-lg-3 control-label">Title</label>
             <div class="col-lg-8">
-              <input type="text"
-                      class="form-control"
-                      id="inputTitle"
-                      formControlName="title">
+              <input type="text" class="form-control" id="inputTitle" formControlName="title">
+            </div>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+              <div *ngIf="title.errors.required">
+                Title is Required!
+              </div>
             </div>
           </div>
           <div class="form-group">
             <label for="inputYear" class="col-lg-3 control-label">Url</label>
             <div class="col-lg-8">
-              <input type="text"
-                      class="form-control"
-                      id="inputUrl"
-                      formControlName="url">
+              <input type="text" class="form-control" id="inputUrl" formControlName="url">
+              <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alert alert-danger">
+                <div *ngIf="url.errors.required">
+                  Image URL is Required!
+                </div>
+                <div *ngIf="url.errors.validUrl && !url.errors.required">
+                  Doesn't Look Like Valid URL!
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group">
             <label for="inputYear" class="col-lg-3 control-label">Thumbnail Url</label>
             <div class="col-lg-8">
-              <input type="text"
-                class="form-control"
-                id="inputThumbnailUrl"
-                formControlName="thumbnailUrl">
+              <input type="text" class="form-control" id="inputThumbnailUrl" formControlName="thumbnailUrl">
+            </div>
+            <div *ngIf="thumbnailUrl.invalid && (thumbnailUrl.dirty || thumbnailUrl.touched)" class="alert alert-danger">
+              <div *ngIf="thumbnailUrl.errors.required">
+                Image Thumbnail URL is Required!
+              </div>
+              <div *ngIf="thumbnailUrl.errors.validUrl && !thumbnailUrl.errors.required">
+                Doesn't Look Like Valid URL!
+              </div>
             </div>
           </div>
           <div class="form-group">
             <div class="col-lg-8 col-lg-offset-3">
-              <button type="submit"
-                      class="btn btn-dark"
-                      [routerLink]="['/items']">
-                        <i class="fas fa-chevron-left"></i>
-                        Back
+              <button type="submit" class="btn btn-dark" [routerLink]="['/items']">
+                <i class="fas fa-chevron-left"></i>
+                Back
               </button>
-              <button type="submit" style="margin-left: 3vw;" class="btn btn-dark">Save</button>
+              <button type="submit" style="margin-left: 3vw;" class="btn btn-dark" [disabled]="editForm.invalid">Save</button>
             </div>
 
           </div>

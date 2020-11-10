@@ -16,15 +16,9 @@ export class NavBarComponent implements OnInit {
   constructor(private location: Location, private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-          if(event.url === '/items'){
-            this.clicked = true;
-          }
-          else {
-            this.clicked = false;
-          }
+        this.clicked = event.url === '/items';
       }
     });
-    console.log(this.clicked);
   }
 
   ngOnInit() {

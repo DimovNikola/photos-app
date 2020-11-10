@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemComponent } from '../item/item.component';
 import { DataService } from '../services/data.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ValidateUrl } from '../validators/url.validator';
 
 @Component({
   selector: 'app-edit',
@@ -22,14 +23,14 @@ export class EditComponent implements OnInit {
               private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.editForm = this.fb.group({
-      albumId: '',
-      id: '',
-      title: '',
-      url: '',
-      thumbnailUrl: ''
-    });
 
+    this.editForm = this.fb.group({
+      albumId: ['', Validators.required],
+      id: ['', Validators.required],
+      title: ['', Validators.required],
+      url: ['', [Validators.required, ValidateUrl]],
+      thumbnailUrl: ['', [Validators.required, ValidateUrl]]
+    });
 
     let itemId: number = +this.route.snapshot.params['id'];
     let response = this.dataService.getItem(itemId);
@@ -61,4 +62,9 @@ export class EditComponent implements OnInit {
     this.router.navigate(['/items']);
   }
 
+  get albumId() {return this.editForm.get('albumId');}
+  get id() {return this.editForm.get('id');}
+  get title() {return this.editForm.get('title');}
+  get url() {return this.editForm.get('url');}
+  get thumbnailUrl() {return this.editForm.get('thumbnailUrl');}
 }

@@ -1,67 +1,78 @@
 <div class="col-lg-5">
   <div class="well bs-component">
-    <form [formGroup]="addItemForm" (ngSubmit)="saveItem()" class="form-horizontal">
+    <form novalidate [formGroup]="addItemForm" (ngSubmit)="saveItem()" class="form-horizontal">
       <fieldset>
         <legend>Add New Item</legend>
         <div class="form-group">
-          <label for="inputTitle" class="col-lg-3 control-label">Album Id</label>
+          <label for="title" class="col-lg-3 control-label">Album Id</label>
           <div class="col-lg-8">
-            <input type="text"
-                    class="form-control"
-                    id="inputAlbumId"
-                    placeholder="Album Id"
-                    formControlName="albumId">
+            <input type="text" class="form-control" id="albumId" placeholder="Album Id" formControlName="albumId"
+              required>
+          </div>
+          <div *ngIf="albumId.invalid && (albumId.dirty || albumId.touched)" class="alert alert-danger">
+            <div *ngIf="albumId.errors.required">
+              Album ID is Required!
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="inputAuthor" class="col-lg-3 control-label">Id</label>
           <div class="col-lg-8">
-            <input type="text"
-                    class="form-control"
-                    id="inputId"
-                    placeholder="id"
-                    formControlName="id">
+            <input type="text" class="form-control" id="id" placeholder="id" formControlName="id">
+          </div>
+          <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+            <div *ngIf="id.errors.required">
+             ID is Required!
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="inputYear" class="col-lg-3 control-label">Title</label>
           <div class="col-lg-8">
-            <input type="text"
-                    class="form-control"
-                    id="inputTitle"
-                    placeholder="title"
-                    formControlName="title">
+            <input type="text" class="form-control" id="title" placeholder="title" formControlName="title">
+          </div>
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+            <div *ngIf="title.errors.required">
+              Title is Required!
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="inputYear" class="col-lg-3 control-label">Url</label>
           <div class="col-lg-8">
-            <input type="text"
-                    class="form-control"
-                    id="inputUrl"
-                    placeholder="url"
-                    formControlName="url">
+            <input type="text" class="form-control" id="inputUrl" placeholder="url" formControlName="url">
+          </div>
+          <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alert alert-danger">
+            <div *ngIf="url.errors.required">
+              Image URL is Required!
+            </div>
+            <div *ngIf="url.errors.validUrl && !url.errors.required">
+              Doesn't Look Like Valid URL!
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="inputYear" class="col-lg-3 control-label">Thumbnail Url</label>
           <div class="col-lg-8">
-            <input type="text"
-                    class="form-control"
-                    id="inputThumbnailUrl"
-                    placeholder="Thumbnail Url"
-                    formControlName="thumbnailUrl">
+            <input type="text" class="form-control" id="inputThumbnailUrl" placeholder="Thumbnail Url"
+              formControlName="thumbnailUrl">
+          </div>
+          <div *ngIf="thumbnailUrl.invalid && (thumbnailUrl.dirty || thumbnailUrl.touched)" class="alert alert-danger">
+            <div *ngIf="thumbnailUrl.errors.required">
+              Image Thumbnail URL is Required!
+            </div>
+            <div *ngIf="thumbnailUrl.errors.validUrl && !thumbnailUrl.errors.required">
+              Doesn't Look Like Valid URL!
+            </div>
           </div>
         </div>
         <div class="form-group">
           <div class="col-lg-8 col-lg-offset-3">
-            <button type="submit"
-                    class="btn btn-dark"
-                    [routerLink]="['/items']">
-                      <i class="fas fa-chevron-left"></i>
-                      Back
+            <button type="submit" class="btn btn-dark" [routerLink]="['/items']">
+              <i class="fas fa-chevron-left"></i>
+              Back
             </button>
-            <button type="submit" style="margin-left: 3vw;" class="btn btn-dark">Save</button>
+            <button type="submit" style="margin-left: 3vw;" class="btn btn-dark" [disabled]="addItemForm.invalid">Save</button>
           </div>
         </div>
       </fieldset>
