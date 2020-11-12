@@ -1,5 +1,5 @@
-import { DataService } from './../../services/data.service';
-import { ItemComponent } from './../../item/item.component';
+import { DataService } from '../services/data.service';
+import { ItemComponent } from '../item/item.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
